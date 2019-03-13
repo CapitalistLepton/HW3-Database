@@ -25,18 +25,15 @@ function main() {
 
   const save = document.getElementById('save');
   save.onclick = function () {
-    console.debug('saving');
     socket.emit('save', { studentname: 'Zane Littrell', statename: 'lifeState', data: life.cells });
   };
 
   const load = document.getElementById('load');
   load.onclick = function () {
-    console.debug('loading');
     socket.emit('load', { studentname: 'Zane Littrell', statename: 'lifeState' });
   };
 
   socket.on('load', function (data) {
-    console.debug(data);
     life.setCells(data.data);
     game.draw();
   });
