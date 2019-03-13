@@ -4,11 +4,22 @@
     <meta charset="utf-8">
     <title>Game of Life</title>
     <link rel="stylesheet" href="./main.css" />
+    <script type="text/javascript" src="http://24.16.255.56:8888/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="./life.js"></script>
     <script type="text/javascript" src="./main.js"></script>
   </head>
   <body>
-    <button id="pause">▶ ❚❚</button>
+    <ul id="controls">
+      <li>
+        <button id="save">Save</button>
+      </li>
+      <li>
+        <button id="load">Load</button>
+      </li>
+      <li>
+        <button id="pause">▶ ❚❚</button>
+      </li>
+    </ul>
     <canvas id="gameWorld" tabindex="1" width="1200" height="600"></canvas>
   </body>
 </html>

@@ -73,6 +73,10 @@ class Life {
     this.cells = newCells;
   }
 
+  setCells(cells) {
+    this.cells = cells;
+  }
+
   check(i, j) {
     let neighbors = 0;
     neighbors += this.valueOf(i + 1, j - 1);

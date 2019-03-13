@@ -11,6 +11,7 @@ window.requestAnimFrame = (function () {
 })();
 
 function main() {
+  const socket = io.connect('http://24.16.255.56:8888');
   const canvas = document.getElementById('gameWorld');
   const ctx = canvas.getContext('2d');
 
@@ -22,6 +23,23 @@ function main() {
     game.paused = !game.paused;
   };
 
+  const save = document.getElementById('save');
+  save.onclick = function () {
+    console.debug('saving');
+    socket.emit('save', { studentname: 'Zane Littrell', statename: 'lifeState', data: life.cells });
+  };
+
+  const load = document.getElementById('load');
+  load.onclick = function () {
+    console.debug('loading');
+    socket.emit('load', { studentname: 'Zane Littrell', statename: 'lifeState' });
+  };
+
+  socket.on('load', function (data) {
+    console.debug(data);
+    life.setCells(data.data);
+    game.draw();
+  });
   game.start();
 }
 
